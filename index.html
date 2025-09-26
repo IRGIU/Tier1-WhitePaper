@@ -180,6 +180,37 @@
             margin-bottom: 10px;
         }
 
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: #fff;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            background: #000;
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 40px 20px;
@@ -196,6 +227,14 @@
             h3 {
                 font-size: 18px;
             }
+
+            .scroll-to-top {
+                width: 40px;
+                height: 40px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -211,7 +250,7 @@
         <div class="header">
             <div class="org-name">CANVI IRGIU</div>
             <div class="doc-type">White Paper / Tier 1 Analysis</div>
-            <h1>The Rise of Right-Wing Populism in the United Kingdom: Immigration, Identity, and Political Shifts</h1>
+            <h1>The Rise of Right-Wing Populism<br>in the United Kingdom:<br>Immigration, Identity, and Political Shifts</h1>
         </div>
 
         <div class="content">
@@ -794,5 +833,27 @@
             <p>CONFIDENTIAL</p>
         </div>
     </div>
+
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('visible');
+            } else {
+                scrollToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    </script>
 </body>
 </html>
